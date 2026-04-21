@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <%= link_to root_path do %>
+      <%= image_tag(root_url+"moyasar.png", :style=>"width:20%;", alt: "Logo") %>
+    <% end %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="text-end">
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <%= link_to 'Your uploads', home_path , class:"nav-link"%>
+          </li>
+                  
+          <% if signed_in? %>
+            <li class="nav-item">
+              <%= link_to current_user.email, edit_user_registration_path, class:"nav-link" %>
+            </li>
+        
+            <li class="nav-item">
+              <%= button_to "Log out", destroy_user_session_path, method: :delete, data: { turbo: "false" }, class:"nav-link" %>
+            </li>
+            
+          <% else %>
+        
+            <li class="nav-item">
+              <%= link_to "Log in", new_user_session_path, class:"nav-link" %>
+            </li>
+            
+            <li class="nav-item">
+              <%= link_to "Register", new_user_registration_path, class:"nav-link" %>
+            </li>
+        
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

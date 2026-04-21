@@ -1,0 +1,2 @@
+class BlobDataStorage < ApplicationRecord
+end

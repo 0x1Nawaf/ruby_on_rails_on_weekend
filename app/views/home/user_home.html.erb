@@ -1,0 +1,45 @@
+<div class="text-end">
+    Your API Auth token: 
+    <div class="text-break">
+    <% if current_user.user_tokens.first != nil %>
+        <%= current_user.user_tokens.first.token %>
+    <% end %>
+    </div>
+</div>
+<h1>Your uploads</h1>
+<br>
+<hr>
+<br>
+
+<% if @blobs.count < 1 %>
+    <div class="alert alert-primary" role="alert">
+        It seems you didn't upload any object
+    </div>
+<% else %>
+    <div class="row">
+    <% @blobs.each do |blob| %>
+        <div class="col-lg-3 text-center text-break my-4">
+            <div>
+                ref_id:
+                <i class="fw-bold">
+                    <%= blob.data_ref_id %>
+                </i>
+            </div>
+            
+            <div>
+                storing_type:
+                <i class="fw-bold">
+                    <%= blob.storing_type %>
+                </i>
+
+            </div>
+            <div>
+                uploaded_at:
+                <i class="fw-bold">
+                    <%= blob.created_at %>
+                </i>
+            </div>
+        </div>
+    <% end %>
+    </div>
+<% end %>
